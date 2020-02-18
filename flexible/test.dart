@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class TestWidget extends StatelessWidget {
   final String text;
   final Color color;
