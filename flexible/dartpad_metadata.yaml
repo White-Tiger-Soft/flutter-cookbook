@@ -3,4 +3,3 @@ name: Dart test with all files present
 mode: flutter
 files:
   - name: main.dart
-  - name: test.dart
