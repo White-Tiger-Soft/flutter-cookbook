@@ -4,7 +4,7 @@ void main() {
   String text;
   nonsafePrint(text);
   
-  // Простейiий способ обезопасить код от null объекта - проверить его на равенство null:
+  // Простейший способ обезопасить код от null объекта - проверить его на равенство null:
   text = "HelloWorld";
   if (text != null) {    
     nonsafePrint(text);
