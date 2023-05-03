@@ -5,6 +5,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,6 +21,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyWidget extends StatelessWidget {
+  const MyWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -27,53 +31,78 @@ class MyWidget extends StatelessWidget {
         Row(
           children: [
             Flexible(
-              child: TestWidget("Flexible loose", Colors.blue.shade300),
+              child: TestWidget(
+                text: "Flexible loose",
+                color: Colors.blue.shade300,
+              ),
             ),
             Flexible(
               fit: FlexFit.tight,
-              child: TestWidget("Flexible tight", Colors.green.shade300),
+              child: TestWidget(
+                text: "Flexible tight",
+                color: Colors.green.shade300,
+              ),
             ),
             Expanded(
-              child: TestWidget("Expanded", Colors.red.shade300),
+              child: TestWidget(
+                text: "Expanded",
+                color: Colors.red.shade300,
+              ),
             ),
           ],
         ),
         Container(
           padding: EdgeInsets.all(8),
           child: Text(
-              "Expanded это Flexible с параметром fit равным FlexFit.tight"),
+            'Expanded это Flexible с параметром fit равным FlexFit.tight. '
+            'Параметр fit отвечает зато, будет виджет заполнять всё доступное пространство '
+            'или размер виджета будет определятся дочерним элементом',
+          ),
         ),
         Divider(),
         Row(
           children: [
             Expanded(
               flex: 1,
-              child: TestWidget("Flex = 1, 1/6", Colors.blue.shade300),
+              child: TestWidget(
+                text: "Flex = 1, 1/6",
+                color: Colors.blue.shade300,
+              ),
             ),
             Expanded(
               flex: 2,
-              child: TestWidget("Flex = 2, 2/6", Colors.green.shade300),
+              child: TestWidget(
+                text: "Flex = 2, 2/6",
+                color: Colors.green.shade300,
+              ),
             ),
             Expanded(
               flex: 3,
-              child: TestWidget("Flex = 3, 3/6", Colors.red.shade300),
+              child: TestWidget(
+                text: "Flex = 3, 3/6",
+                color: Colors.red.shade300,
+              ),
             ),
           ],
         ),
         Container(
           padding: EdgeInsets.all(8),
           child: Text(
-              "Параметр flex указывает какую часть доступного пространства занимает Flexible. Он не займет пространство больше выделенного, даже если есть свободное. Данный эффект можно использовать, для того что бы определить границы виджета не больше родительских. Пример:"),
+            'Параметр flex указывает какую часть доступного пространства занимает Flexible. '
+            'Он не займет пространство больше выделенного, даже если есть свободное. '
+            'Данный эффект можно использовать, для того что бы определить границы виджета не больше родительских. Пример:',
+          ),
         ),
         Row(
           children: [
             Container(
               padding: EdgeInsets.all(8),
               child: Text(
-                "Данный текст неограничен справа, поэтому выходит за пределы виджета. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur nisi eget consequat finibus.",
+                'Данный текст неограничен справа, поэтому выходит за пределы виджета. '
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur nisi eget consequat finibus.',
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText1
+                    .bodyLarge
                     ?.apply(color: Colors.red),
               ),
             ),
@@ -85,7 +114,9 @@ class MyWidget extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.all(8),
                 child: Text(
-                  "Данный текст ограничен свойством flex внутри виджета Expanded, поэтому переносится на новую строку. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                  'Данный текст ограничен свойством flex внутри виджета Expanded, '
+                  'поэтому переносится на новую строку. '
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge
@@ -98,17 +129,27 @@ class MyWidget extends StatelessWidget {
         Divider(),
         Row(
           children: [
-            Flexible(child: TestWidget("Flexible loose", Colors.blue.shade300)),
+            Flexible(
+              child: TestWidget(
+                text: "Flexible loose",
+                color: Colors.blue.shade300,
+              ),
+            ),
             Spacer(),
             Expanded(
-              child: TestWidget("Expanded", Colors.red.shade300),
+              child: TestWidget(
+                text: "Expanded",
+                color: Colors.red.shade300,
+              ),
             ),
           ],
         ),
         Container(
           padding: EdgeInsets.all(8),
           child: Text(
-              "Spacer создает Expanded с указанным flex и пустым виджетом внутри (SizedBox.shrink())"),
+            'Spacer создает Expanded с указанным flex '
+            'и пустым виджетом внутри (SizedBox.shrink())',
+          ),
         ),
       ],
     );
@@ -118,7 +159,12 @@ class MyWidget extends StatelessWidget {
 class TestWidget extends StatelessWidget {
   final String text;
   final Color color;
-  TestWidget(this.text, this.color);
+
+  TestWidget({
+    required this.text,
+    required this.color,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +172,7 @@ class TestWidget extends StatelessWidget {
       color: color,
       padding: EdgeInsets.all(16),
       child: Text(
-        text ?? "",
+        text,
         textAlign: TextAlign.center,
       ),
     );
