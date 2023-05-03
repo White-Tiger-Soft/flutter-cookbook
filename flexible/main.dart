@@ -70,7 +70,12 @@ class MyWidget extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(8),
               child: Text(
-                  "Данный текст неограничен справа, поэтому выходит за пределы виджета. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur nisi eget consequat finibus.", style: Theme.of(context).textTheme.bodyText1.apply(color: Colors.red),),
+                "Данный текст неограничен справа, поэтому выходит за пределы виджета. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce efficitur nisi eget consequat finibus.",
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    ?.apply(color: Colors.red),
+              ),
             ),
           ],
         ),
@@ -80,11 +85,16 @@ class MyWidget extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.all(8),
                 child: Text(
-                    "Данный текст ограничен свойством flex внутри виджета Expanded, поэтому переносится на новую строку. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", style: Theme.of(context).textTheme.bodyText1.apply(color: Colors.green),),
+                  "Данный текст ограничен свойством flex внутри виджета Expanded, поэтому переносится на новую строку. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyLarge
+                      ?.apply(color: Colors.green),
+                ),
               ),
             ),
           ],
-        ),        
+        ),
         Divider(),
         Row(
           children: [
